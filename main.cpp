@@ -90,7 +90,7 @@ bool Preprocess(istream& input, ostream& output, const path& file_name, const ve
     return true;
 }
 
-bool Preprocess(const filesystem::path& in_file, const filesystem::path& out_file, const vector<filesystem::path>& include_directories) {
+bool IncludeDependencies(const filesystem::path& in_file, const filesystem::path& out_file, const vector<filesystem::path>& include_directories) {
     if (!filesystem::exists(in_file)) {
         return false;
     }
@@ -155,7 +155,7 @@ void Test() {
         file << "// std2\n"s;
     }
 
-    assert((!Preprocess("sources"_p / "a.cpp"_p, "sources"_p / "a.in"_p,
+    assert((!IncludeDependencies("sources"_p / "a.cpp"_p, "sources"_p / "a.in"_p,
         { "sources"_p / "include1"_p,"sources"_p / "include2"_p })));
 
     ostringstream test_out;
