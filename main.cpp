@@ -13,8 +13,7 @@ using filesystem::path;
 filesystem::path operator""_p(const char* data, std::size_t sz) {
     return filesystem::path(data, data + sz);
 }
-
-// напишите эту функцию
+ 
 bool Preprocess(istream& input, ostream& output, const path& file_name, const vector<path>& include_directories) {
     static regex include_repeat_sign(R"/(\s*#\s*include\s*"([^"]*)"\s*)/"); // #include "..."
     static regex include_quotation_marks(R"/(\s*#\s*include\s*<([^>]*)>\s*)/"); // #include <...>
